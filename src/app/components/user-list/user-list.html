@@ -1,0 +1,68 @@
+<div class="portal-container">
+  <!-- 🧭 HEADER -->
+  <header class="portal-header">
+    <div class="header-left">
+      <h1>User Management Portal</h1>
+      <p class="subtitle">Manage, search, and view user details easily</p>
+    </div>
+    <div class="header-right">
+      <a routerLink="/users/new" class="btn add-btn">
+        ➕ Add New User
+      </a>
+    </div>
+  </header>
+
+  <!-- 🔍 SEARCH BAR -->
+  <section class="search-section">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search users by name, email, or company..."
+      (input)="onSearch($event)"
+    />
+  </section>
+
+  <!-- 🌀 LOADING / ERROR STATES -->
+  @if (user.loading()) {
+    <div class="status-message loading">⏳ Loading users...</div>
+  }
+
+  @if (user.error()) {
+    <div class="status-message error">❌ {{ user.error() }}</div>
+  }
+
+  <!-- 👥 USER GRID -->
+  @if (!user.loading() && filteredUsers().length > 0) {
+    <section class="user-grid">
+      @for (user of filteredUsers(); track user.id) {
+        <article class="user-card" appHighlight="#f9f9ff">
+          <header class="user-card-header">
+            <div class="user-name">
+              <h3>{{ user.name }}</h3>
+              <span class="user-id">#{{ user.id }}</span>
+            </div>
+          </header>
+
+          <div class="user-details">
+            <p><strong>📧</strong> {{ user.email }}</p>
+            <p><strong>📱</strong> {{ user.phone }}</p>
+            <p><strong>🏢</strong> {{ user.company.name }}</p>
+            <p><strong>🌐</strong> {{ user.website }}</p>
+          </div>
+
+          <footer class="user-actions">
+            <a [routerLink]="['/users', user.id]" class="btn view-btn">👁️ View</a>
+            <a [routerLink]="['/users', user.id, 'edit']" class="btn edit-btn">✏️ Edit</a>
+          </footer>
+        </article>
+      }
+    </section>
+  }
+
+  <!-- 🚫 NO RESULTS -->
+  @if (!user.loading() && filteredUsers().length === 0) {
+    <div class="no-results">
+      <p>No users found matching "<strong>{{ searchTerm() }}</strong>"</p>
+    </div>
+  }
+</div>

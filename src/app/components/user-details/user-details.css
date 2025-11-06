@@ -1,0 +1,100 @@
+.details-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+/* 🧭 Header */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.details-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.actions .btn {
+  margin-left: 0.5rem;
+}
+
+/* 🧊 Info Card */
+.user-details-card {
+  background: #f9fafb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #555;
+}
+
+.value, .link {
+  color: #333;
+  font-weight: 500;
+}
+
+.link {
+  color: #4f46e5;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ⚙️ Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-btn {
+  background: #6b7280;
+}
+.back-btn:hover {
+  background: #4b5563;
+}
+
+.edit-btn {
+  background: #f59e0b;
+}
+.edit-btn:hover {
+  background: #d97706;
+}
+
+/* 🔄 Status messages */
+.status {
+  text-align: center;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.status.loading {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+.status.error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
